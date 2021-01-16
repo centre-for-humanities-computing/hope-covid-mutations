@@ -10,7 +10,8 @@ import re
 import string
 
 #mega_path = glob.glob('/data/001_twitter_hope/preprocessed/da/*2021*.ndjson')
-mega_path = glob.glob('/data/001_twitter_hope/preprocessed/da/*202012*.ndjson')
+#mega_path = glob.glob('/data/001_twitter_hope/preprocessed/da/*202012*.ndjson')
+mega_path = glob.glob('/data/001_twitter_hope/preprocessed/da/*.ndjson')
 #glob.glob('/home/commando/data_processed/megafiles/da_created_october2020/ultimate_megafile_pieces/*.ndjson')
 
 i = 0
