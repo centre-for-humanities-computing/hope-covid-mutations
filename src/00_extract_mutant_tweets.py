@@ -50,15 +50,15 @@ def extract_mettef(row):
 
 def extract_britisk_corona(row):
     tweet = row["text"].lower()
-    test_list = ['b117', 'britisk corona', "mutation", "britiske virus", "engelsk mutation", "engelsk variant",
-                "super-covid"] 
+    tweet = tweet.translate(str.maketrans('', '', string.punctuation))
+    test_list = ['b117', 'b.1.1.7', 'b1.1.7','britisk corona','britiske corona', "britiske virus","britisk virus", "engelsk mutation", "engelsk variant", "engelsk corona", "mutation", "super-covid", "super covid"] 
     res = [ele for ele in test_list if(ele in tweet)] 
 
     return res
 
 def extract_wider(row):
     tweet = row["text"].lower()
-    test_list = ["britsik", "mutant", "mutation", "mutated", "engelsk"] 
+    test_list = ["britsik", "mutant", "mutated", "engelsk", "mink"] 
     res = [ele for ele in test_list if(ele in tweet)] 
 
     return res
