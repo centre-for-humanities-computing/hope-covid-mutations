@@ -1,3 +1,5 @@
+# source /home/commando/covid_19_rbkh/Preprocessing/text_to_x/bin/activate
+
 import text_to_x as ttx
 import pandas as pd
 

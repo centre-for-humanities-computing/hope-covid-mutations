@@ -51,14 +51,14 @@ def extract_mettef(row):
 def extract_britisk_corona(row):
     tweet = row["text"].lower()
     tweet = tweet.translate(str.maketrans('', '', string.punctuation))
-    test_list = ['b117', 'b.1.1.7', 'b1.1.7','britisk corona','britiske corona', "britiske virus","britisk virus", "engelsk mutation", "engelsk variant", "engelsk corona", "mutation", "super-covid", "super covid"] 
+    test_list = ['b117', 'b.1.1.7', 'b1.1.7','britisk corona','britiske corona', "britiske virus","britisk virus", "engelsk mutation", "engelsk variant", "engelsk corona", "super-covid", "super covid", "boris-mutationen"] 
     res = [ele for ele in test_list if(ele in tweet)] 
 
     return res
 
 def extract_wider(row):
     tweet = row["text"].lower()
-    test_list = ["britsik", "mutant", "mutated", "engelsk", "mink"] 
+    test_list = ["britsik", "mutant", "mutated", "engelsk", "mink", "mutation", "england", "britiske"] 
     res = [ele for ele in test_list if(ele in tweet)] 
 
     return res
@@ -91,11 +91,10 @@ for file in mega_path:
     df = remove_retweets(data)
     
     #df = data
-    df["mettef"] = df.apply(lambda row: extract_mettef(row), axis = 1)
     df["b117"] = df.apply(lambda row: extract_britisk_corona(row), axis = 1)
     df["wider"] = df.apply(lambda row: extract_wider(row), axis = 1)
 
-    df = df[["created_at", "id", "text", "mettef", "b117", "wider"]]# "neg", "neu", "pos", "compound"]]
+    df = df[["created_at", "id", "text", "b117", "wider"]]# "neg", "neu", "pos", "compound"]]
     #df = df[df["mettef"] != 0].drop_duplicates().reset_index(drop=True)
     
     filename = "../data/mutant_" + file_name + ".csv"
