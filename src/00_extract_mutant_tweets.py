@@ -24,11 +24,11 @@ def retrieve_retweets(row):
         RT = False
     return RT
 
-def remove_retweets(ori_data):
+def remove_retweets(data):
     patternDel = "^RT"
     data["text"] = data["text"].astype(str)
     filtering = data['text'].str.contains(patternDel)
-    removed_RT = ori_data[~filtering].reset_index(drop=True)
+    removed_RT = data[~filtering].reset_index(drop=True)
     
     return removed_RT
 
